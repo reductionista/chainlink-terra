@@ -56,16 +56,17 @@ func (ct *ContractTracker) LatestConfigDetails(ctx context.Context) (changedInBl
 
 // LatestConfig returns data by searching emitted events and is called in the same scenario as LatestConfigDetails
 func (ct *ContractTracker) LatestConfig(ctx context.Context, changedInBlock uint64) (types.ContractConfig, error) {
-	res, err := ct.chainReader.TxsEvents([]string{fmt.Sprintf("tx.height=%d", changedInBlock), fmt.Sprintf("wasm-set_config.contract_address='%s'", ct.address)})
+	txsEvents := []string{fmt.Sprintf("tx.height=%d", changedInBlock), fmt.Sprintf("wasm-set_config.contract_address='%s'", ct.address)}
+	res, err := ct.chainReader.TxsEvents(txsEvents)
 	if err != nil {
 		return types.ContractConfig{}, err
 	}
 	if len(res.TxResponses) == 0 {
-		return types.ContractConfig{}, fmt.Errorf("No transactions found for block %d", changedInBlock)
+		return types.ContractConfig{}, fmt.Errorf("No transactions found for block %d, txEvents=%s", changedInBlock, txsEvents)
 	}
 	// fetch event and process (use first tx and \first log set)
 	if len(res.TxResponses[0].Events) == 0 {
-		return types.ContractConfig{}, fmt.Errorf("No events found for tx %s", res.TxResponses[0].TxHash)
+		return types.ContractConfig{}, fmt.Errorf("No events found for tx %s, txEvents=%s", res.TxResponses[0].TxHash, txsEvents)
 	}
 
 	for _, event := range res.TxResponses[0].Events {
