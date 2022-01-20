@@ -1,11 +1,9 @@
 package terra
 
 import (
-	"fmt"
 	"github.com/smartcontractkit/chainlink-terra/pkg/terra/client"
 	"github.com/smartcontractkit/chainlink-terra/pkg/terra/db"
 	"github.com/smartcontractkit/terra.go/msg"
-	"strings"
 
 	"github.com/smartcontractkit/libocr/offchainreporting2/types"
 )
@@ -22,31 +20,9 @@ type TransmitMsg struct {
 }
 
 type TransmitPayload struct {
-	ReportContext ByteArray      `json:"report_context"`
-	Report        ByteArray      `json:"report"`
-	Signatures    ByteArrayArray `json:"signatures"`
-}
-
-// ByteArrayArray and ByteArray implement custom unmarshalling because go unmarshals []byte and []uint8 to strings
-type ByteArrayArray [][]byte
-type ByteArray []byte
-
-func (b ByteArray) MarshalJSON() ([]byte, error) {
-	return unmarshalByteArrays(b)
-}
-
-func (b ByteArrayArray) MarshalJSON() ([]byte, error) {
-	return unmarshalByteArrays(b)
-}
-
-func unmarshalByteArrays(b interface{}) ([]byte, error) {
-	var result string
-	if b == nil {
-		result = "null"
-	} else {
-		result = strings.Join(strings.Fields(fmt.Sprintf("%d", b)), ",") // prints a number array in string form
-	}
-	return []byte(result), nil
+	ReportContext []byte   `json:"report_context"`
+	Report        []byte   `json:"report"`
+	Signatures    [][]byte `json:"signatures"`
 }
 
 type ConfigDetails struct {
