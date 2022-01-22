@@ -8,6 +8,8 @@ export enum CONTRACT_LIST {
   DEVIATION_FLAGGING_VALIDATOR = 'deviation_flagging_validator',
   OCR_2 = 'ocr2',
   ACCESS_CONTROLLER = 'access_controller',
+  MULTISIG = 'cw3_flex_multisig',
+  CW4_GROUP = 'cw4_group'
 }
 
 export enum TERRA_OPERATIONS {
@@ -67,6 +69,7 @@ const contractDirName = {
   [CONTRACT_LIST.DEVIATION_FLAGGING_VALIDATOR]: 'deviation-flagging-validator',
   [CONTRACT_LIST.OCR_2]: 'ocr2',
   [CONTRACT_LIST.ACCESS_CONTROLLER]: 'access-controller',
+  [CONTRACT_LIST.MULTISIG]: 'multisig'
 }
 
 export const getContractABI = (contractId: CONTRACT_LIST): TerraABI => {

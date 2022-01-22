@@ -1,6 +1,7 @@
 .direnv
 target/
 artifacts/
+bin/
 tarpaulin-report.html
 
 # TS

@@ -1,1 +1,7 @@
-{}
+{
+  "flags": 5,
+  "deviation_flagging_validator": 6,
+  "ocr2": 7,
+  "access_controller": 8,
+  "cw3_flex_multisig": 12
+}
