@@ -45,34 +45,24 @@ const makeGroupInitParams = async (input : CreateGroupInput): Promise<GroupInitP
   }
 }
 
-type CreateWalletInput = {
-  owners: string[],
-  threshold: number
-}
-
 type WalletInitParams = {
-  owners: string[],
-  threshold: number
+  group_addr: string,
+  max_voting_period: Duration,
+  threshold: Threshold
 }
 
-const makeCreateWalletInput = async (flags: any): Promise<CreateWalletInput> => {
+const makeWalletInitParams = (flags: any): Promise<WalletInitParams> => {
   if (flags.input) return flags.input as CreateWalletInput
   return {
-    owners: flags.owners,
-    threshold: flags.threshold
+    group_addr: flags.group_addr,
+    max_voting_period: max_voting_period,
+    threshold: threshold
   }
 }
 
 // TODO: Add validation
 const validateCreateWalletInput = (input: CreateWalletInput): boolean => {
   return true
-}
-
-const makeWalletInitParams = async (input: CreateWalletInput): Promise<WalletInitParams> => {
-  return {
-    owners: input.owners,
-    threshold: input.threshold    
-  }
 }
 
 const createGroupInstruction:  AbstractInstruction<CreateGroupInput, GroupInitParams> = {
