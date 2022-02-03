@@ -1,5 +1,5 @@
 import { CATEGORIES } from '../../../lib/constants'
-import { AbstractInstruction, instructionToCommand } from '../../abstract/executionWrapper'
+import { AbstractInstruction, instructionToCommand } from '../../abstract/wrapper'
 import { Duration, validDuration, Threshold, validThreshold, GroupMember, validAddr } from './lib/types'
 
 type CreateGroupInput = {
