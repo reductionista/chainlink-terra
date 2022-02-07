@@ -10,7 +10,7 @@ export enum CONTRACT_LIST {
   OCR_2 = 'ocr2',
   ACCESS_CONTROLLER = 'access_controller',
   MULTISIG = 'cw3_flex_multisig',
-  CW4_GROUP = 'cw4_group'
+  CW4_GROUP = 'cw4_group',
 }
 
 export enum TERRA_OPERATIONS {
@@ -64,7 +64,7 @@ const contractDirName = {
   [CONTRACT_LIST.OCR_2]: 'ocr2',
   [CONTRACT_LIST.ACCESS_CONTROLLER]: 'access-controller',
   [CONTRACT_LIST.CW4_GROUP]: 'cw4_group',
-  [CONTRACT_LIST.MULTISIG]: 'cw3_flex_multisig'
+  [CONTRACT_LIST.MULTISIG]: 'cw3_flex_multisig',
 }
 
 export const getContractABI = (contractId: CONTRACT_LIST): TerraABI => {

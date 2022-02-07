@@ -1,8 +1,4 @@
-//import Deploy from './deploy'
-import {CreateGroup, CreateWallet} from './create'
-//import Vote from './vote'
-//import Propose from './propose'
-//import Execute from './execute'
-//import Close from './close'
+import { CreateGroup } from './group'
+import { CreateWallet } from './wallet'
 
 export default [CreateGroup, CreateWallet]
