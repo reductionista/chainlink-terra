@@ -10,7 +10,7 @@ export type Duration = {
 
 export function isValidDuration(d: Duration): boolean {
   if (typeof d === 'undefined') {
-      return false
+    return false
   } else if (typeof d.time === 'undefined' && typeof d.height === 'number') {
     return d.height! >= 0
   } else if (typeof d.height === 'undefined' && typeof d.time === 'number') {
