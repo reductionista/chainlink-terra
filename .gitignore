@@ -1,7 +1,7 @@
 .direnv
 .vscode
 target/
-artifacts/
+artifacts/bin/
 tarpaulin-report.html
 
 # TS
@@ -12,8 +12,6 @@ dist
 flow-report.json
 .envrc
 bin
-
-packages-ts/gauntlet-terra-contracts/artifacts/bin
 
 # test
 packages-ts/gauntlet-terra-contracts/codeIds/test*
